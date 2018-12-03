@@ -1,0 +1,33 @@
+<!--
+  Generated template for the AddCarroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>add-carro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form>
+    <ion-item>
+      <ion-label floating>Marca</ion-label>
+      <ion-input type="text" [(ngModel)]='carro.marca' name="marca"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Modelo</ion-label>
+      <ion-input type="text" [(ngModel)]='carro.modelo' name="modelo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Ano</ion-label>
+      <ion-input type="text" [(ngModel)]='carro.ano' name="ano"></ion-input>
+    </ion-item>
+    <br>
+    <button ion-button full type="submit" (click)="salvar()"> Salvar</button>
+  </form>
+</ion-content>

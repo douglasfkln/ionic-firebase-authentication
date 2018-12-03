@@ -4,6 +4,7 @@ import { UserService } from '../core/user.service';
 import { AuthService } from '../core/auth.service';
 import { FirebaseUserModel } from '../core/user.model';
 import * as firebase from 'firebase/app';
+import { CarrosPage } from '../carros/carros';
 
 @Component({
   selector: 'page-user',
@@ -45,5 +46,9 @@ export class UserPage{
     // }, (error) => {
     //   console.log("Logout error", error);
     // });
+  }
+
+  meus_carros() {
+    this.navCtrl.push(CarrosPage);
   }
 }

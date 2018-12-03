@@ -20,7 +20,20 @@ import { environment } from '../environment/environment';
 import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { TwitterConnect } from '@ionic-native/twitter-connect';
+import { CarrosPageModule } from '../pages/carros/carros.module';
+import { AddCarroPageModule } from '../pages/add-carro/add-carro.module';
+import * as firebase from 'firebase'
 
+const config = {
+  apiKey: "AIzaSyAt_4sGgAs4BP2AH5e_FqI9Yxxu6jTR4-s",
+  authDomain: "chat-ionic3-firebase.firebaseapp.com",
+  databaseURL: "https://chat-ionic3-firebase.firebaseio.com",
+  projectId: "chat-ionic3-firebase",
+  storageBucket: "chat-ionic3-firebase.appspot.com",
+  messagingSenderId: "187596625088"
+};
+
+firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
@@ -32,8 +45,10 @@ import { TwitterConnect } from '@ionic-native/twitter-connect';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireAuthModule,
+    CarrosPageModule,
+    AddCarroPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
