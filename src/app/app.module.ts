@@ -13,8 +13,8 @@ import { UserPage} from '../pages/user/user';
 import { AuthService } from '../pages/core/auth.service';
 import { UserService } from '../pages/core/user.service';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environment/environment';
 
 import { Facebook } from '@ionic-native/facebook';

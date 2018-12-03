@@ -9,7 +9,7 @@ import { CarrosPage } from '../pages/carros/carros';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = CarrosPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
