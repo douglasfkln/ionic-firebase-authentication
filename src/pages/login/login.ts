@@ -42,7 +42,7 @@ export class LoginPage {
     firebase.auth().signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password)
      .then(res => {
       console.log(res);
-      this.navCtrl.push(UserPage);
+      this.navCtrl.push(UserPage, {email:this.loginForm.email});
      }, err => {this.errorMessage = err});
     // this.authService.doLogin(value)
     // .then(res => {
