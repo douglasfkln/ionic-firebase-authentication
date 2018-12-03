@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../core/auth.service';
 
 import { UserPage } from '../user/user';
-
+import * as firebase from 'firebase/app';
 
 
 @Component({
@@ -15,9 +15,14 @@ import { UserPage } from '../user/user';
 })
 export class RegisterPage {
 
-  registerForm: FormGroup;
+  // registerForm: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
+
+  registerForm: {
+    email:'',
+    password:''
+  };
 
   constructor(
     public navCtrl: NavController,
@@ -26,49 +31,57 @@ export class RegisterPage {
   ) {}
 
   ionViewWillLoad(){
-    this.registerForm = this.formBuilder.group({
-      email: new FormControl(),
-      password: new FormControl()
-    });
+    this.registerForm = {
+      email: '',
+      password: ''
+    };
   }
 
-  tryRegister(value){
-    this.authService.doRegister(value)
-     .then(res => {
-       this.errorMessage = "";
-       this.successMessage = "Your account has been created. Please log in now.";
-     }, err => {
-       this.errorMessage = err.message;
-       this.successMessage = "";
-     })
+  tryRegister(){
+    firebase.auth().createUserWithEmailAndPassword(this.registerForm.email, this.registerForm.password)
+    .then(res => {
+      console.log(res);
+      this.successMessage = 'Cadastrado com sucesso';
+      this.navCtrl.pop();
+    }, err => {
+      this.errorMessage = err;
+    });
+    // this.authService.doRegister(value)
+    //  .then(res => {
+    //    this.errorMessage = "";
+    //    this.successMessage = "Your account has been created. Please log in now.";
+    //  }, err => {
+    //    this.errorMessage = err.message;
+    //    this.successMessage = "";
+    //  })
   }
 
-  tryFacebookLogin(){
-    this.authService.doFacebookLogin()
-    .then((res) => {
-      this.navCtrl.push(UserPage);
-    }, (err) => {
-      this.errorMessage = err.message;
-    });
-  }
+  // tryFacebookLogin(){
+  //   this.authService.doFacebookLogin()
+  //   .then((res) => {
+  //     this.navCtrl.push(UserPage);
+  //   }, (err) => {
+  //     this.errorMessage = err.message;
+  //   });
+  // }
 
-  tryGoogleLogin(){
-    this.authService.doGoogleLogin()
-    .then((res) => {
-      this.navCtrl.push(UserPage);
-    }, (err) => {
-      this.errorMessage = err.message;
-    });
-  }
+  // tryGoogleLogin(){
+  //   this.authService.doGoogleLogin()
+  //   .then((res) => {
+  //     this.navCtrl.push(UserPage);
+  //   }, (err) => {
+  //     this.errorMessage = err.message;
+  //   });
+  // }
 
-  tryTwitterLogin(){
-    this.authService.doTwitterLogin()
-    .then((res) => {
-      this.navCtrl.push(UserPage);
-    }, (err) => {
-      this.errorMessage = err.message;
-    });
-  }
+  // tryTwitterLogin(){
+  //   this.authService.doTwitterLogin()
+  //   .then((res) => {
+  //     this.navCtrl.push(UserPage);
+  //   }, (err) => {
+  //     this.errorMessage = err.message;
+  //   });
+  // }
 
   goLoginPage(){
     this.navCtrl.pop();
